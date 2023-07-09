@@ -6,6 +6,7 @@ import (
 
 	"github.com/charmbracelet/log"
 	"github.com/fogleman/gg"
+	"golang.org/x/image/webp"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -23,15 +24,32 @@ func main() {
 	}
 	defer reader.Close()
 
-	img, _, err := image.Decode(reader)
+	backgroundImage, _, err := image.Decode(reader)
+	if err != nil {
+		log.Fatal(err)
+	}
+	reader2, err := os.Open("image.webp")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer reader2.Close()
+
+	actualImage, err := webp.Decode(reader2)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	dc := gg.NewContextForImage(img)
-	dc.DrawCircle(500, 500, 400)
-	dc.SetRGB(0, 0, 0)
-	dc.Fill()
+	dc := gg.NewContextForImage(backgroundImage)
+	dc.DrawImageAnchored(actualImage, 1600, 1800, 0.5, 0.5)
+
+	err = dc.LoadFontFace("font.ttf", 144.0)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	dc.SetRGB(1, 171/255.0, 186/255.0)
+	dc.DrawStringAnchored("Docuchat", 1600, 400, 0.5, 0.5)
+
 	err = dc.SavePNG("out.png")
 	if err != nil {
 		log.Fatalf("error saving image: %v", err)
