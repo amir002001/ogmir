@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/charmbracelet/log"
 	"github.com/go-rod/rod"
 	"github.com/go-rod/rod/lib/launcher"
 	"github.com/go-rod/rod/lib/proto"
@@ -13,14 +12,7 @@ import (
 var launcherUrl string
 
 func init() {
-	browser := launcher.NewBrowser()
-	path, err := browser.Get()
-	if err != nil {
-		log.Fatal("could not get browser binary")
-	}
-	log.Infof("browser path: %s", path)
-
-	launcherUrl = launcher.New().Bin(path).MustLaunch()
+	launcherUrl = launcher.New().Bin("chromium-browser").MustLaunch()
 }
 
 func ScreenshotMainElement(file *os.File) ([]byte, error) {

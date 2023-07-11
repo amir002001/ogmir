@@ -6,6 +6,7 @@ import (
 	"og-post-space-invaders/types"
 	"og-post-space-invaders/utils"
 	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/charmbracelet/log"
@@ -20,8 +21,19 @@ func OpenGraphHandler(ctx *fiber.Ctx) error {
 	postTitle := ctx.Query("title", "")
 	score := random.Intn(100)
 
+	dir, err := os.Getwd()
+	if err != nil {
+		return err
+	}
+
+	wwwDir := filepath.Join(dir, "www")
+	wwwAbs, err := filepath.Abs(wwwDir)
+	if err != nil {
+		return err
+	}
+
 	placeholders := types.TemplatePlacehoders{
-		Www:      "/Users/amirhosseinazizafshari/dev/og-post-space-invaders/www",
+		Www:      wwwAbs,
 		ImageUrl: postImageUrl,
 		Score:    fmt.Sprint(score),
 		Title:    postTitle,
