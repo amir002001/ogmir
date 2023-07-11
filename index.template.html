@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ .Www }}/resets.css" />
+    <link rel="stylesheet" href="{{ .Www }}/style.css" />
+</head>
+
+<body>
+    <section id="main">
+        <!-- score -->
+        <p id="score">score: {{ .Score }}</p>
+        <!-- Title -->
+        <p id="title">{{ .Title }}</p>
+        <!-- Image -->
+        <img id="post-image" src="{{ .ImageUrl }}" alt="post image" />
+    </section>
+</body>
+
+</html>

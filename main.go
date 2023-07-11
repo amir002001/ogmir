@@ -1,57 +1,42 @@
 package main
 
 import (
-	"image"
+	"html/template"
 	"os"
 
 	"github.com/charmbracelet/log"
-	"github.com/fogleman/gg"
-	"golang.org/x/image/webp"
-
-	"github.com/gofiber/fiber/v2"
 )
 
+type TemplatePlacehoders struct {
+	Www      string
+	ImageUrl string
+	Score    string
+	Title    string
+}
+
 func main() {
-	app := fiber.New()
-
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World!")
-	})
-
-	reader, err := os.Open("Game.png")
+	tmplFile := "index.template.html"
+	tmpl, err := template.New(tmplFile).ParseFiles(tmplFile)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("nyooo \n%v", err)
 	}
-	defer reader.Close()
 
-	backgroundImage, _, err := image.Decode(reader)
-	if err != nil {
-		log.Fatal(err)
-	}
-	reader2, err := os.Open("image.webp")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer reader2.Close()
-
-	actualImage, err := webp.Decode(reader2)
+	f, err := os.CreateTemp("", "output-*.html")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	dc := gg.NewContextForImage(backgroundImage)
-	dc.DrawImageAnchored(actualImage, 1600, 1800, 0.5, 0.5)
+	log.Printf("file created : %s", f.Name())
+	//	defer os.Remove(f.Name()) // clean up
 
-	err = dc.LoadFontFace("font.ttf", 144.0)
-	if err != nil {
-		log.Fatal(err)
+	placeholders := TemplatePlacehoders{
+		Www:      "/Users/amirhosseinazizafshari/dev/og-post-space-invaders/www",
+		ImageUrl: "https://res.cloudinary.com/df3h8ffly/image/upload/v1684094745/portfolio/gallery_wp18zu.webp",
+		Score:    "12",
+		Title:    "FoodBox",
 	}
-
-	dc.SetRGB(1, 171/255.0, 186/255.0)
-	dc.DrawStringAnchored("Docuchat", 1600, 400, 0.5, 0.5)
-
-	err = dc.SavePNG("out.png")
+	err = tmpl.Execute(f, placeholders)
 	if err != nil {
-		log.Fatalf("error saving image: %v", err)
+		log.Fatalf("nyooo \n%v", err)
 	}
 }

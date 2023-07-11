@@ -1,0 +1,54 @@
+@font-face {
+  font-family: "robot";
+  src: url("./font.ttf");
+}
+
+#main {
+  position: relative;
+  width: 800px;
+  height: 600px;
+  font-family: "robot";
+  background: url("./Game.png");
+}
+
+#score {
+  position: absolute;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+  left: 50%;
+  top: 24px;
+
+  color: rgba(192, 192, 192, 1);
+  text-shadow: 0px 2px 20px rgba(255, 255, 255, 0.6),
+    0px 2px 44px rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+}
+
+#title {
+  position: absolute;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+  left: 50%;
+  top: 108px;
+
+  color: #ffabba;
+  text-align: center;
+  text-shadow: 0px 2px 12px #ff517b, 0px 2px 44px #ff003d, 0px 2px 44px #ff008a;
+
+  font-size: 72px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 48px;
+
+  filter: blur(0.5px);
+}
+
+#post-image {
+  position: absolute;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+  left: 50%;
+  bottom: 48px;
+  max-width: 480px;
+  max-height: 320px;
+}
