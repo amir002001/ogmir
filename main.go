@@ -8,6 +8,8 @@ import (
 	"time"
 
 	"github.com/charmbracelet/log"
+	"github.com/go-rod/rod"
+	"github.com/go-rod/rod/lib/proto"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -20,12 +22,22 @@ type TemplatePlacehoders struct {
 
 const tmplFile = "index.template.html"
 
+func main() {
+	app := fiber.New()
+	api := app.Group("api")
+	v1 := api.Group("v1")
+
+	v1.Get("/opengraph", openGraphHandler)
+
+	log.Fatal(app.Listen(":8080"))
+}
+
 func openGraphHandler(ctx *fiber.Ctx) error {
 	source := rand.NewSource(time.Now().Unix())
 	random := rand.New(source)
 
-	postImageUrl := ctx.Params("image", "")
-	postTitle := ctx.Params("title", "")
+	postImageUrl := ctx.Query("image", "")
+	postTitle := ctx.Query("title", "")
 	score := random.Intn(100)
 
 	placeholders := TemplatePlacehoders{
@@ -35,13 +47,14 @@ func openGraphHandler(ctx *fiber.Ctx) error {
 		Title:    postTitle,
 	}
 
-	ctx.Type("image/png")
+	log.Infof("generated template placeholders: %v", placeholders)
 
 	tmpHtmlFile, err := os.CreateTemp("", "output-*.html")
 	if err != nil {
 		return err
 	}
 	defer os.Remove(tmpHtmlFile.Name())
+	defer tmpHtmlFile.Close()
 
 	err = generateTemplate(tmpHtmlFile, placeholders)
 	if err != nil {
@@ -53,14 +66,22 @@ func openGraphHandler(ctx *fiber.Ctx) error {
 		return err
 	}
 
+	ctx.Type("png")
+
 	if _, err := ctx.Write(ogImageBytes); err != nil {
 		return err
 	}
 	return nil
 }
 
-func generateOgImage(*os.File) ([]byte, error) {
-	return nil, nil
+func generateOgImage(file *os.File) ([]byte, error) {
+	page := rod.New().MustConnect().MustPage(fmt.Sprintf("file://%s", file.Name()))
+	err := page.WaitLoad()
+	el := page.MustElement("#main")
+	if err != nil {
+		return nil, err
+	}
+	return el.Screenshot(proto.PageCaptureScreenshotFormatPng, 100)
 }
 
 func generateTemplate(file *os.File, placeholders TemplatePlacehoders) error {
@@ -74,15 +95,6 @@ func generateTemplate(file *os.File, placeholders TemplatePlacehoders) error {
 		return err
 	}
 
+	log.Infof("template executed for %s", file.Name())
 	return nil
-}
-
-func main() {
-	app := fiber.New()
-	api := app.Group("api")
-	v1 := api.Group("v1")
-
-	v1.Get("/opengraph", openGraphHandler)
-
-	log.Fatal(app.Listen(":8080"))
 }
