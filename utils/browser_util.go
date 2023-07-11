@@ -12,7 +12,7 @@ import (
 var launcherUrl string
 
 func init() {
-	launcherUrl = launcher.New().Bin("chromium-browser").MustLaunch()
+	launcherUrl = launcher.New().Bin("chromium-browser").NoSandbox(true).MustLaunch()
 }
 
 func ScreenshotMainElement(file *os.File) ([]byte, error) {
