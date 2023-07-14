@@ -65,7 +65,6 @@ Are you tired of your Twitter links looking like this:
 ![no opengraph](./docs/assets/no-og.png)
 
 Well, you should check this project out. I made this project out of passion for Go and a lack of a good open-source starting point for generating open graph images using Go.
-Bootstrap
 
 There are many ways of achieving similar results. Vercel OG Image offers a serverless solution that can only be used on Next.JS. You could also use fogleman/gg to draw a canvas and export that as an image, but you won't have access to fancy CSS, DOM utilities, etc.
 
@@ -192,7 +191,7 @@ Project Link: [https://github.com/amir002001/ogmir](https://github.com/amir00200
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Golang-url]: https://go.dev/
 [Golang]: https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white
-[Sqlite-url]: https://go.dev/
-[Sqlite]: https://www.sqlite.org/
+[Sqlite-url]: https://www.sqlite.org/
+[Sqlite]: https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white
 [Docker]: https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white
 [Docker-url]: https://docker.com
