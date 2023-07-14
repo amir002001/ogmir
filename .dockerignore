@@ -3,5 +3,9 @@ fly.toml
 
 fiber.sqlite3
 
+
 .github
 .git
+
+docs
+README.md
