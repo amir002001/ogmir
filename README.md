@@ -18,7 +18,7 @@
 <h3 align="center">ogmir</h3>
 
   <p align="center">
-    a blazinlgy-fast, batteries-included-but-swappable, Opengraph image generator rest endpoint using the DevTools API
+    a blazingly-fast, batteries-included-but-swappable, Opengraph image generator rest endpoint using the DevTools API
     <br />
     <!-- <a href="https://github.com/amir002001/ogmir"><strong>Explore the docs »</strong></a> -->
     <br />
@@ -58,12 +58,13 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![Ogmir Screenshot](./docs/assets/screenshot.png)
 
 Are you tired of your Twitter links looking like this:
-[![Boring Twitter Link][product-screenshot]](https://example.com)
 
-Well you should check this project out. I made this project out of passion for go and a lack of a good open-source starting point for generating open graph images using Go.
+![no opengraph](./docs/assets/no-og.png)
+
+Well, you should check this project out. I made this project out of passion for Go and a lack of a good open-source starting point for generating open graph images using Go.
 Bootstrap
 
 There are many ways of achieving similar results. Vercel OG Image offers a serverless solution that can only be used on Next.JS. You could also use fogleman/gg to draw a canvas and export that as an image, but you won't have access to fancy CSS, DOM utilities, etc.
@@ -72,13 +73,13 @@ The basic idea is to use Go templates to generate HTML on the fly based on query
 
 To enable better performance I've added a caching layer as well using an on-disk SQLite DB. It proves fine for my use case right now. Could very well be hot-swapped for a Redis cache or an S3, Blob Storage solution.
 
-Same concept was also used for a rate-limiter to reduce abilities of malicious actors. To further improve security you can reject requests that don't come from your bucket.
+Same concept was also used for a rate-limiter to reduce the abilities of malicious actors. To further improve security you can reject requests that don't come from your bucket.
 
 This is a project I created and will be maintaining for my blog engine at [amir.day](https://amir.day).
 
 Thank you to the maintainers of Go Fiber and Go Rod for such a well-maintained API. I had a blast writing this and I'm glad to see it works.
 
-I have a **fly.toml** file in the root directory and a github action you could use to deploy your service as well but feel free to use anything from Azure app service to cloud run, etc. to deploy it.
+I have a **fly.toml** file in the root directory and a GitHub action you could use to deploy your service as well but feel free to use anything from Azure app service to cloud run, etc. to deploy it.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -98,7 +99,7 @@ For the template itself, I suggest using the sample HTML file in the root direct
 
 For running and debugging the Go code, either rebuild the container every time (the install layers will all be cached and only the build step is repeated), or volume mount the src folder into a slightly modified Alpine image with the required packages installed.
 
-You could also build and run locally if you have the chromium binary in your path. It might be a different name than the one Alpine wants, so you might want to add a sim-link or rename it in the code.
+You could also build and run locally if you have the chromium binary in your path. It might be a different name than the one Alpine wants, so you might want to add a sim link or rename it in the code.
 
 ### Deployment
 
@@ -125,7 +126,7 @@ These steps are for people deploying to fly. Feel free to change it up for your 
 
 ### CI/CD
 
-I have it setup to deploy to fly on pushes to main branch, to achieve this, get a deploy token for your app and add it to github secrets. The workflow will pick it up.
+I have it setup to deploy to fly on pushes to main branch, to achieve this, get a deployment token for your app and add it to GitHub secrets. The workflow will pick it up.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -133,7 +134,7 @@ I have it setup to deploy to fly on pushes to main branch, to achieve this, get 
 
 ## Roadmap
 
-- [ ] Limit to only enable calls from my cloudinary instance
+- [ ] Limit to only enable calls from my Cloudinary instance
 - [ ] add MIT license
 
 See the [open issues](https://github.com/amir002001/ogmir/issues) for a full list of proposed features (and known issues).
@@ -144,16 +145,16 @@ See the [open issues](https://github.com/amir002001/ogmir/issues) for a full lis
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what makes the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+2. Create your feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a pull request
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
