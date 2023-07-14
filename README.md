@@ -186,7 +186,7 @@ Project Link: [https://github.com/amir002001/ogmir](https://github.com/amir00200
 [stars-url]: https://github.com/amir002001/ogmir/stargazers
 [issues-shield]: https://img.shields.io/github/issues/amir002001/ogmir.svg?style=for-the-badge
 [issues-url]: https://github.com/amir002001/ogmir/issues
-[license-shield]: https://img.shields.io/github/license/amir002001/ogmir.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge
 [license-url]: https://github.com/amir002001/ogmir/blob/master/LICENSE
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Golang-url]: https://go.dev/
