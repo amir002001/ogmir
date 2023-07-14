@@ -6,6 +6,7 @@ require (
 	github.com/charmbracelet/log v0.2.2
 	github.com/go-rod/rod v0.113.4
 	github.com/gofiber/fiber/v2 v2.47.0
+	github.com/gofiber/storage/sqlite3 v1.3.8
 )
 
 require (
@@ -19,6 +20,7 @@ require (
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.19 // indirect
 	github.com/mattn/go-runewidth v0.0.14 // indirect
+	github.com/mattn/go-sqlite3 v1.14.17 // indirect
 	github.com/muesli/reflow v0.3.0 // indirect
 	github.com/muesli/termenv v0.15.1 // indirect
 	github.com/philhofer/fwd v1.1.2 // indirect
