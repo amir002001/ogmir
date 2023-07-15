@@ -4,9 +4,17 @@ on:
     branches:
       - main
 jobs:
+  test:
+    name: Test app
+    runs-on: ubuntu-latest
+    steps:
+      - name: run go test
+        run: |
+          "go test ./..."
   deploy:
     name: Deploy app
     runs-on: ubuntu-latest
+    needs: test
     steps:
       # This step checks out a copy of your repository.
       - uses: actions/checkout@v3
