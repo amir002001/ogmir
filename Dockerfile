@@ -15,9 +15,11 @@ RUN go build -o ogapp
 
 
 FROM alpine:latest
+WORKDIR /srv
 
-COPY --from=build /go/src/ogapp /srv/ogapp
-COPY ./www /srv/www
+COPY --from=build /go/src/ogapp ./ogapp
+COPY ./www ./www
+COPY ./index.template.html ./
 
 RUN apk add --update chromium && apk info --purge
 
