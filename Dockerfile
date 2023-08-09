@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM golang:alpine as build
+FROM golang:alpine as ci
 
 ENV CGO_ENABLED=1
 
@@ -10,6 +10,8 @@ RUN apk add \--update build-base
 
 COPY . .
 
+RUN go test ./...
+
 RUN go build -o ogapp
 
 
@@ -17,7 +19,7 @@ RUN go build -o ogapp
 FROM alpine:latest
 WORKDIR /srv
 
-COPY --from=build /go/src/ogapp ./ogapp
+COPY --from=ci /go/src/ogapp ./ogapp
 COPY ./www ./www
 COPY ./index.template.html ./
 

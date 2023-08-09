@@ -4,22 +4,8 @@ on:
     branches:
       - main
 jobs:
-  test:
-    name: test app
-    runs-on: ubuntu-latest
-    container:
-      image: golang:alpine
-    steps:
-      - uses: actions/checkout@v3
-      - run: apk add --update chromium && apk add build-base
-      - run: |
-          go version
-      - run: |
-          go test ./...
-
-  deploy:
-    needs: test
-    name: deploy app
+  cicd:
+    name: perform ci/cd
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
