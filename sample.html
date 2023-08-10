@@ -5,9 +5,9 @@
     <title></title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="css/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="www/resets.css" />
-    <link rel="stylesheet" href="www/style.css" />
+    <link rel="stylesheet" href="www/resets.css" rel="preload" as="style" />
+    <link rel="stylesheet" href="www/style.css" rel="preload" as="style" />
+    <script src="www/textfit.min.js"></script>
 </head>
 
 <body>
@@ -15,12 +15,19 @@
         <!-- score -->
         <p id="score">score: 0</p>
         <!-- Title -->
-        <p id="title">hello world my name is Amir</p>
+        <p id="title">Multi-stage builds and debugging scratch images</p>
         <!-- Image -->
-        <img id="post-image"
-            src="https://res.cloudinary.com/df3h8ffly/image/upload/v1684097011/portfolio/returnify.webp"
-            alt="post image" />
+        <img id="post-image" src="https://mypaintingclub.com/images/modules/main/219_5946_Bamsi.jpg" alt="post image" />
     </section>
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        textFit(document.getElementById("title"), {
+            multiLine: true,
+            minFontSize: 10,
+            maxFontSize: 48,
+        });
+    });
+</script>
 
 </html>

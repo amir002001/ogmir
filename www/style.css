@@ -25,17 +25,16 @@
 }
 
 #title {
-  position: absolute;
-  text-transform: uppercase;
-  transform: translateX(-50%);
-  left: 50%;
-  top: 80px;
   width: 80%;
+  max-height: 120px;
+  left: 50%;
+  top: 64px;
+  position: absolute;
+
+  transform: translateX(-50%);
+  text-transform: uppercase;
   font-size: 56px;
-  white-space: nowrap;
   text-overflow: ellipsis;
-  overflow: hidden;
-  padding: 60px 60px;
 
   color: #ffabba;
   text-align: center;
@@ -43,7 +42,7 @@
 
   font-style: normal;
   font-weight: 400;
-  line-height: 48px;
+  line-height: 64px;
 
   filter: blur(0.5px);
 }
@@ -53,7 +52,7 @@
   text-transform: uppercase;
   transform: translateX(-50%);
   left: 50%;
-  bottom: 48px;
-  max-width: 480px;
-  max-height: 320px;
+  bottom: 32px;
+  max-width: 400px;
+  max-height: 300px;
 }
