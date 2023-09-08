@@ -3,6 +3,6 @@ package types
 type TemplatePlacehoders struct {
 	Www      string
 	ImageUrl string
-	Score    string
+	Date     string
 	Title    string
 }

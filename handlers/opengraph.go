@@ -1,25 +1,19 @@
 package handlers
 
 import (
-	"fmt"
-	"math/rand"
 	"og-post-space-invaders/types"
 	"og-post-space-invaders/utils"
 	"os"
 	"path/filepath"
-	"time"
 
 	"github.com/charmbracelet/log"
 	"github.com/gofiber/fiber/v2"
 )
 
 func OpenGraphHandler(ctx *fiber.Ctx) error {
-	source := rand.NewSource(time.Now().Unix())
-	random := rand.New(source)
-
 	postImageUrl := ctx.Query("image", "")
 	postTitle := ctx.Query("title", "")
-	score := random.Intn(100)
+	postDate := ctx.Query("date", "")
 
 	dir, err := os.Getwd()
 	if err != nil {
@@ -35,8 +29,8 @@ func OpenGraphHandler(ctx *fiber.Ctx) error {
 	placeholders := types.TemplatePlacehoders{
 		Www:      wwwAbs,
 		ImageUrl: postImageUrl,
-		Score:    fmt.Sprint(score),
 		Title:    postTitle,
+		Date:     postDate,
 	}
 
 	log.Infof("generated template placeholders: %v", placeholders)
