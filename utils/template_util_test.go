@@ -34,7 +34,7 @@ func TestGenerateTemplate(t *testing.T) {
 	placeholders := types.TemplatePlacehoders{
 		Www:      wwwAbs,
 		ImageUrl: "https://placehold.co/600x400",
-		Score:    "23",
+		Date:     "September 23 2023",
 		Title:    "Amir",
 	}
 
