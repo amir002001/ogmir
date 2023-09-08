@@ -5,34 +5,6 @@
     <title></title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-</head>
-
-<body>
-    <section id="main">
-        <!-- score -->
-        <p id="score">score: {{ .Score }}</p>
-        <!-- Title -->
-        <!-- Image -->
-    </section>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            textFit(document.getElementById("title"), {
-                multiLine: true,
-                minFontSize: 10,
-                maxFontSize: 48,
-            });
-        });
-    </script>
-</body>
-
-</html>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title></title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="{{ .Www }}/resets.css" rel="preload" as="style" />
     <link rel="stylesheet" href="{{ .Www }}/style.css" rel="preload" as="style" />
     <script src="{{ .Www }}/textfit.min.js"></script>
