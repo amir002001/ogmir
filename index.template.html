@@ -5,9 +5,6 @@
     <title></title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="{{ .Www }}/resets.css" rel="preload" as="style" />
-    <link rel="stylesheet" href="{{ .Www }}/style.css" rel="preload" as="style" />
-    <script src="{{ .Www }}/textfit.min.js"></script>
 </head>
 
 <body>
@@ -15,9 +12,7 @@
         <!-- score -->
         <p id="score">score: {{ .Score }}</p>
         <!-- Title -->
-        <p id="title">{{ .Title }}</p>
         <!-- Image -->
-        <img id="post-image" src="{{ .ImageUrl }}" alt="post image" />
     </section>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -29,5 +24,40 @@
         });
     </script>
 </body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{ .Www }}/resets.css" rel="preload" as="style" />
+    <link rel="stylesheet" href="{{ .Www }}/style.css" rel="preload" as="style" />
+    <script src="{{ .Www }}/textfit.min.js"></script>
+</head>
+
+<body>
+    <section id="main">
+        <!-- Title -->
+        <p id="title">{{ .Title }}</p>
+        <!-- Date -->
+        <p id="date">{{ .Date }}</p>
+        <!-- Image -->
+        <img id="post-image" <img id="post-image" src="{{ .ImageUrl }}" alt="post image" />
+        <!--Logo-->
+        <img id="logo" src="{{ .Www }}/logo.png" alt="logo img" />
+    </section>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        textFit(document.getElementById("title"), {
+            multiLine: true,
+            minFontSize: 24,
+            maxFontSize: 64,
+        });
+    });
+</script>
 
 </html>
